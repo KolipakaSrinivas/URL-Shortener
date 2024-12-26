@@ -6,6 +6,7 @@ async function handleGenerateNewUrl(req, res) {
     const body = req.body;
     if (!body.url) return res.status(400).json({ msg: "url required" });
     const shortId = nanoid(8);
+    console.log(shortId);
     const newUrl = await URL.create({
       shortId: shortId,
       redirectURL: body.url,
