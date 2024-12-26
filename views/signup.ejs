@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+</head>
+
+<body>
+    <div>
+        <h1>Sign Up</h1>
+        <p>
+            <% if (locals.error) { %>
+                <%= locals.error %>
+                    <% } %>
+        </p>
+        <form method="POST" action="/signup" style="display: flex; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <label for="name">Name</label>
+                <input type="text" placeholder="Enter Your Name" name="name">
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" placeholder="Enter Your Email" name="email">
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" placeholder="Enter Your Password" name="password">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <p style="color: blue; font-weight: 500;"><a href="/login">You already have an account please Sign in</a></p>
+    </div>
+</body>
+
+</html>

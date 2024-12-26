@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Login</h1>
+    <p style="color: red;">
+        <% if (locals.error) { %>
+            <%= locals.error %>
+                <% } %>
+    </p>
+    <form method="POST" action="/login" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <div>
+            <label for="email">Email</label>
+            <input type="text" placeholder="Enter Your Email" name="email">
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" placeholder="Enter Your Password" name="password">
+        </div>
+        <button type="submit">Login</button>
+    </form>
+
+    <p style="color: blue; font-weight: 500;"><a href="/signup">Account doesnt exist</a></p>
+</body>
+
+</html>

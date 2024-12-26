@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>URL Shortener</title>
+  <style>
+    body {
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>URL Shortener<a id="myButton" href="/logout" style="margin-left: 1rem; color: red; cursor: pointer;">Logot</a>
+  </h1>
+  <div>
+    <form method="POST" action="/url">
+      <label for="url">Enter Your Orginal URL</label>
+      <input type="text" name="url" placeholder="http://localhost:3000/url">
+      <button type="submit" style="cursor: pointer;">Generate</button>
+    </form>
+  </div>
+  <div style="margin-top: 2rem;">
+    <% if (locals.urls) { %>
+      <table style="column-gap: 2rem; border-spacing: 30px;">
+        <thead>
+          <th>S.NO</th>
+          <th>Short Url</th>
+          <th>Redirect</th>
+          <th>Clicks</th>
+        </thead>
+        <tbody>
+          <% locals.urls.map((url,index)=> { %>
+            <tr>
+              <td>
+                <%= index +1 %>
+              </td>
+              <td>
+                <a href=http://localhost:3000/url/<%=url.shortId %> >
+                  <%= url.shortId %>
+                </a>
+              </td>
+              <td>
+                <%= url.redirectURL %>
+              </td>
+              <td>
+                <%= url.vistHistory.length %>
+              </td>
+            </tr>
+            <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+  </div>
+  </script>
+</body>
+
+</html>
