@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    <section class="flex flex-col items-center pt-6 h-screen bg-[#e5e7eb]">
+        <div class="w-[380px] bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 ">
+            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
+                    Create an
+                    account
+                </h1>
+                <form class="space-y-4 md:space-y-6" method="POST" action="/signup">
+                    <div>
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Your full
+                            name</label>
+                        <input type="text" name="name" id="name"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
+                            placeholder="Your Name" required="">
+                    </div>
+                    <div>
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Email</label>
+                        <input type="email" name="email" id="email"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
+                            placeholder="email@gmail.com" required="">
+                    </div>
+                    <div>
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Password</label>
+                        <input type="password" name="password" id="password" placeholder="••••••••"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
+                            required="">
+                    </div>
+                    <button type="submit"
+                        class="w-full cursor-pointer text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Create
+                        an account</button>
+                    <p class="text-sm font-light text-gray-500 dark:text-gray-400">Already have an account? <a
+                            class="font-medium text-blue-600 hover:underline dark:text-blue-500" href="/login">Sign in
+                            here</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const form = document.querySelector("form");
+
+                form.addEventListener("submit", function (e) {
+                    const name = document.getElementById("name").value.trim();
+                    const email = document.getElementById("email").value.trim();
+                    const password = document.getElementById("password").value;
+
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                    let errors = [];
+
+                    if (!name) {
+                        errors.push("Name is required.");
+                    }
+
+                    if (!email || !emailRegex.test(email)) {
+                        errors.push("A valid email is required.");
+                    }
+
+                    if (password.length < 6) {
+                        errors.push("Password must be at least 6 characters long.");
+                    }
+
+                    if (errors.length > 0) {
+                        e.preventDefault(); // Stop form submission
+                        alert(errors.join("\n"));
+                    }
+                });
+            });
+        </script>
+
+</body>
+
+</html>
